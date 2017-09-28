@@ -73,7 +73,7 @@ $cart->add('1003', 1, [
 
 Updates quantity of an item. Attributes must be provides if item with same ID exists with different attributes.
 
-> **bool \$cart->update( **string** \$id, **int** $quantity\[, **array** \$attributes\] );
+> **bool** \$cart->update( **string** \$id, **int** $quantity\[, **array** \$attributes\] );
 
 ```php
 // Set quantity for item #1001 to 5

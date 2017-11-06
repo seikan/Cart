@@ -73,7 +73,7 @@ class Cart
 			$this->useCookie = true;
 		}
 
-		$this->cartId = md5((isset($_SERVER['HTTP_HOST'])) ? $_SERVER['HTTP_HOST'] : 'SimpleCart').'_cart';
+		$this->cartId = md5((isset($_SERVER['HTTP_HOST'])) ? $_SERVER['HTTP_HOST'] : 'SimpleCart') . '_cart';
 
 		$this->read();
 	}
@@ -220,8 +220,8 @@ class Cart
 		}
 
 		$this->items[$id][] = [
-			'quantity' => ($quantity > $this->itemMaxQuantity) ? $this->itemMaxQuantity : $quantity,
-			'hash' => $hash,
+			'quantity'   => ($quantity > $this->itemMaxQuantity) ? $this->itemMaxQuantity : $quantity,
+			'hash'       => $hash,
 			'attributes' => $attributes,
 		];
 
@@ -289,20 +289,19 @@ class Cart
 			$this->write();
 
 			return true;
-		} else {
-			$hash = md5(json_encode(array_filter($attributes)));
-			$index = 0;
+		}
+		$hash = md5(json_encode(array_filter($attributes)));
+		$index = 0;
 
-			foreach ($this->items[$id] as $item) {
-				if ($item['hash'] == $hash) {
-					unset($this->items[$id][$index]);
+		foreach ($this->items[$id] as $item) {
+			if ($item['hash'] == $hash) {
+				unset($this->items[$id][$index]);
 
-					$this->write();
+				$this->write();
 
-					return true;
-				}
-				++$index;
+				return true;
 			}
+			++$index;
 		}
 
 		return false;

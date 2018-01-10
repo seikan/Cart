@@ -170,7 +170,7 @@ echo $cart->getTotalQuantity();
 
 
 
-###Get Attribute Total
+### Get Attribute Total
 
 Gets the sum of a specific attribute.
 
@@ -206,7 +206,7 @@ $cart->destroy();
 
 
 
-###Item Exists
+### Item Exists
 
 Checks if an item exists in cart.
 

@@ -26,14 +26,14 @@ require_once 'class.Cart.php';
 
 // Initialize Cart object
 $cart = new Cart([
-  	// Can add unlimited number of item to cart
-	'cartMaxItem'	=> 0,
+  // Can add unlimited number of item to cart
+  'cartMaxItem'      => 0,
   
-  	// Set maximum quantity allowed per item to 99
-  	'itemMaxQuantity'	=> 99,
+  // Set maximum quantity allowed per item to 99
+  'itemMaxQuantity'  => 99,
   
-  	// Do not use cookie, cart data will lost when browser is closed
-  	'useCookie'	=> false,
+  // Do not use cookie, cart data will lost when browser is closed
+  'useCookie'        => false,
 ]);
 ```
 
@@ -54,16 +54,16 @@ $cart->add('1002', 5);
 
 // Add item with ID #1003 with price, color, and size
 $cart->add('1003', 1, [
-	'price'	=> '5.99',
-  	'color'	=> 'White',
-  	'size'	=> 'XS',
+  'price'  => '5.99',
+  'color'  => 'White',
+  'size'   => 'XS',
 ]);
 
 // Item with same ID but different attributes will added as separate item in cart
 $cart->add('1003', 1, [
-	'price'	=> '5.99',
-  	'color'	=> 'Red',
-  	'size'	=> 'M',
+  'price'  => '5.99',
+  'color'  => 'Red',
+  'size'   => 'M',
 ]);
 ```
 
@@ -81,9 +81,9 @@ $cart->update('1001', 5);
 
 // Set quantity for item #1003 to 2
 $cart->update('1003', 2, [
-	'price'	=> '5.99',
-  	'color'	=> 'Red',
-  	'size'	=> 'M',
+  'price'  => '5.99',
+  'color'  => 'Red',
+  'size'   => 'M',
 ]);
 ```
 
@@ -101,9 +101,9 @@ $cart->remove('1001');
 
 // Remove item #1003 with color White and size XS
 $cart->remove('1003', [
-	'price'	=> '5.99',
-  	'color'	=> 'White',
-  	'size'	=> 'XS',
+  'price'  => '5.99',
+  'color'  => 'White',
+  'size'   => 'XS',
 ]);
 ```
 
@@ -120,13 +120,13 @@ Gets a multi-dimensional array of items stored in cart.
 $allItems = $cart->getItems();
 
 foreach ($allItems as $items) {
-	foreach ($items as $item) {
-		echo 'ID: '.$item['id'].'<br />';
-		echo 'Qty: '.$item['quantity'].'<br />';
-		echo 'Price: '.$item['attributes']['price'].'<br />';
-		echo 'Size: '.$item['attributes']['size'].'<br />';
-		echo 'Color: '.$item['attributes']['color'].'<br />';
-    }
+  foreach ($items as $item) {
+    echo 'ID: '.$item['id'].'<br />';
+    echo 'Qty: '.$item['quantity'].'<br />';
+    echo 'Price: '.$item['attributes']['price'].'<br />';
+    echo 'Size: '.$item['attributes']['size'].'<br />';
+    echo 'Color: '.$item['attributes']['color'].'<br />';
+  }
 }
 ```
 
@@ -140,7 +140,7 @@ Checks if the cart is empty.
 
 ```php
 if ($cart->isEmpty()) {
-	echo 'There is nothing in the basket.';
+  echo 'There is nothing in the basket.';
 }
 ```
 
@@ -214,7 +214,7 @@ Checks if an item exists in cart.
 
 ```php
 if ($cart->isItemExists('1001')) {
-	echo 'This item already added to cart.';
+  echo 'This item already added to cart.';
 }
 ```
 

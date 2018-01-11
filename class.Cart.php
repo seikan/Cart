@@ -209,7 +209,7 @@ class Cart
 			foreach ($this->items[$id] as $item) {
 				if ($item['hash'] == $hash) {
 					$this->items[$id][$index]['quantity'] += $quantity;
-					$this->items[$id][$index]['quantity'] = ($this->items[$id][$index]['quantity'] > $this->itemMaxQuantity) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
+					$this->items[$id][$index]['quantity'] = ($this->itemMaxQuantity < $this->items[$id][$index]['quantity']) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
 
 					$this->write();
 
@@ -243,7 +243,7 @@ class Cart
 	{
 		$quantity = (preg_match('/^\d+$/', $quantity)) ? $quantity : 1;
 
-		if (0 == $quantity) {
+		if ($quantity == 0) {
 			$this->remove($id, $attributes);
 
 			return true;
@@ -256,7 +256,7 @@ class Cart
 			foreach ($this->items[$id] as $item) {
 				if ($item['hash'] == $hash) {
 					$this->items[$id][$index]['quantity'] = $quantity;
-					$this->items[$id][$index]['quantity'] = ($this->items[$id][$index]['quantity'] > $this->itemMaxQuantity) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
+					$this->items[$id][$index]['quantity'] = ($this->itemMaxQuantity < $this->items[$id][$index]['quantity']) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
 
 					$this->write();
 

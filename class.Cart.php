@@ -291,9 +291,8 @@ class Cart
 			return true;
 		}
 		$hash = md5(json_encode(array_filter($attributes)));
-		$index = 0;
 
-		foreach ($this->items[$id] as $item) {
+		foreach ($this->items[$id] as $index => $item) {
 			if ($item['hash'] == $hash) {
 				unset($this->items[$id][$index]);
 
@@ -301,7 +300,6 @@ class Cart
 
 				return true;
 			}
-			++$index;
 		}
 
 		return false;

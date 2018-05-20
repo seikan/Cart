@@ -220,6 +220,7 @@ class Cart
 		}
 
 		$this->items[$id][] = [
+			'id'         => $id,
 			'quantity'   => ($quantity > $this->itemMaxQuantity) ? $this->itemMaxQuantity : $quantity,
 			'hash'       => $hash,
 			'attributes' => $attributes,

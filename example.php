@@ -127,7 +127,7 @@ if ($a == 'cart') {
 			</div>
 			<div class="pull-right text-right">
 				<a href="?a=home" class="btn btn-default">Continue Shopping</a>
-				<a href="#" class="btn btn-danger">Checkout</a>
+				<a href="?a=checkout" class="btn btn-danger">Checkout</a>
 			</div>
 		</p>';
 	}
@@ -180,6 +180,18 @@ if ($a == 'cart') {
 				<div class="col-md-12">
 					 <div class="table-responsive">
 						<?php echo $cartContents; ?>
+					 </div>
+				</div>
+			</div>
+		</div>
+		<?php elseif ($a == 'checkout'): ?>
+		<div class="container">
+			<h1>Checkout</h1>
+
+			<div class="row">
+				<div class="col-md-12">
+					 <div class="table-responsive">
+					 	<pre><?php print_r($cart->getItems()); ?></pre>
 					 </div>
 				</div>
 			</div>

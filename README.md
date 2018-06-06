@@ -12,11 +12,11 @@ This is a very simple PHP cart library. Cart data can either be saved in PHP ses
 
 ##### Options
 
-| Parameter       | Type     | Description                              |
-| --------------- | -------- | ---------------------------------------- |
-| cartMaxItem     | **int**  | The maximum item can be added to cart. 0 = Unlimited |
-| itemMaxQuantity | **int**  | The maximum quantity per item can be added to cart. |
-| useCookie       | **bool** | Use cookie to keep cart data when browser is closed. |
+| Parameter       | Type     | Description                                                  |
+| --------------- | -------- | ------------------------------------------------------------ |
+| cartMaxItem     | **int**  | The maximum item can be added to cart. 0 = Unlimited         |
+| itemMaxQuantity | **int**  | The maximum quantity per item can be added to cart. 0 = Unlimited |
+| useCookie       | **bool** | Use cookie to keep cart data when browser is closed.         |
 
 
 
@@ -71,7 +71,7 @@ $cart->add('1003', 1, [
 
 ### Update Item
 
-Updates quantity of an item. Attributes must be provides if item with same ID exists with different attributes.
+Updates quantity of an item. Attributes **must be** provides if item with same ID exists with different attributes.
 
 > **bool** \$cart->update( **string** \$id, **int** $quantity\[, **array** \$attributes\] );
 
@@ -91,7 +91,7 @@ $cart->update('1003', 2, [
 
 ### Remove Item
 
-Removes an item. Attributes must be provided to remove specified item, or all items with same ID will be removed from cart.
+Removes an item. Attributes **must be** provided to remove specified item, or all items with same ID will be removed from cart.
 
 > **bool** \$cart->remove( **string** $id\[, **array** \$attributes\] );
 

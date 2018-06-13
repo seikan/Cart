@@ -209,17 +209,15 @@ class Cart
 		}
 
 		if (isset($this->items[$id])) {
-			$index = 0;
-			foreach ($this->items[$id] as $item) {
+			foreach ($this->items[$id] as $index => $item) {
 				if ($item['hash'] == $hash) {
 					$this->items[$id][$index]['quantity'] += $quantity;
-					$this->items[$id][$index]['quantity'] = ($this->itemMaxQuantity < $this->items[$id][$index]['quantity']) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
+					$this->items[$id][$index]['quantity'] = ($this->itemMaxQuantity < $this->items[$id][$index]['quantity'] && $this->itemMaxQuantity != 0) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
 
 					$this->write();
 
 					return true;
 				}
-				++$index;
 			}
 		}
 
@@ -257,8 +255,7 @@ class Cart
 		if (isset($this->items[$id])) {
 			$hash = md5(json_encode(array_filter($attributes)));
 
-			$index = 0;
-			foreach ($this->items[$id] as $item) {
+			foreach ($this->items[$id] as $index => $item) {
 				if ($item['hash'] == $hash) {
 					$this->items[$id][$index]['quantity'] = $quantity;
 					$this->items[$id][$index]['quantity'] = ($this->itemMaxQuantity < $this->items[$id][$index]['quantity'] && $this->itemMaxQuantity != 0) ? $this->itemMaxQuantity : $this->items[$id][$index]['quantity'];
@@ -267,7 +264,6 @@ class Cart
 
 					return true;
 				}
-				++$index;
 			}
 		}
 

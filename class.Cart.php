@@ -334,7 +334,7 @@ class Cart
 	private function write()
 	{
 		if ($this->useCookie) {
-			setcookie($this->cartId, json_encode(array_filter($this->items)), time() + 604800);
+			setcookie($this->cartId, json_encode(array_filter($this->items)), time() + 604800, "/");
 		} else {
 			$_SESSION[$this->cartId] = json_encode(array_filter($this->items));
 		}

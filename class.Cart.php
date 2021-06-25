@@ -190,6 +190,26 @@ class Cart
 	}
 
 	/**
+	 * Get one item from cart
+	 *
+	 * @param string $id
+	 * @param string $hash
+	 *
+	 * @return array
+	 */
+	public function getItem($id, $hash = null)
+	{
+		if($hash){
+			$key = array_search($hash, array_column($this->items[$id], 'hash'));
+			if($key !== false)
+				return $this->items[$id][$key];
+			return false;
+		}
+		else
+			return reset($this->items[$id]);
+	}
+
+	/**
 	 * Add item to cart.
 	 *
 	 * @param string $id

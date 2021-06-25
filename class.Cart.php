@@ -316,6 +316,7 @@ class Cart
 		foreach ($this->items[$id] as $index => $item) {
 			if ($item['hash'] == $hash) {
 				unset($this->items[$id][$index]);
+				$this->items[$id] = array_values($this->items[$id]);
 
 				$this->write();
 

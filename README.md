@@ -131,6 +131,21 @@ foreach ($allItems as $items) {
 ```
 
 
+### Get Item
+
+Gets a multi-dimensional array of one item stored in cart.
+
+> **array** \$cart->getItem( **string** $id\[, **string** \$hash\] );
+
+```php
+// Get first one item from the cart with id 1001
+$theItem = $cart->getItem('1001');
+
+// Get one item from the cart with any id and hash
+$theItem = $cart->getItem($item['id'], $item['hash']);
+```
+
+
 
 ### Check Cart Empty
 

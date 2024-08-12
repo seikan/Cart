@@ -290,6 +290,35 @@ class Cart
 		return false;
 	}
 
+     /**
+     * Update the attributes of a specific item in the cart.
+     *
+     * @param string $id
+     * @param string $hash
+     * @param array  $attributes
+     *
+     * @return bool
+     */
+    public function updateAttributes($id, $hash, $attributes = [])
+    {
+        if (isset($this->items[$id])) {
+            foreach ($this->items[$id] as $index => $item) {
+                if ($item['hash'] == $hash) {
+                    // Update only the attributes that are provided
+                    foreach ($attributes as $key => $value) {
+                        $this->items[$id][$index]['attributes'][$key] = $value;
+                    }
+
+                    $this->write(); // Save the changes to the session
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 	/**
 	 * Remove item from cart.
 	 *

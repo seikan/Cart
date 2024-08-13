@@ -89,6 +89,34 @@ $cart->update('1003', 2, [
 
 
 
+### Update Item Attributes
+
+Updates item attributes. Overwrites existing or adds new attributes.
+
+> **bool** \$cart->update( **string** \$id, **string** $hash\[, **array** \$attributes\] );
+
+```php
+// Add item with ID #1003 with price, color, and size
+$cart->add('1003', 1, [
+  'price'  => '5.99',
+  'color'  => 'White',
+  'size'   => 'XS',
+]);
+
+// Update item #1003, set color to Blue and size to SM
+$cart->updateAttributes('1003', [
+  'color'  => 'Blue',
+  'size'   => 'SM',
+]);
+
+// Update item #1003, set style to tshirt
+$cart->updateAttributes('1003', [
+  'style'  => 'tshirt'
+]);
+```
+
+
+
 ### Remove Item
 
 Removes an item. Attributes **must be** provided to remove specified item, or all items with same ID will be removed from cart.

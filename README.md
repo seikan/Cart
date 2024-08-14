@@ -87,6 +87,29 @@ $cart->update('1003', 2, [
 ]);
 ```
 
+### Update Item Attributes
+The updateAttributes method modifies the attributes of a specific item in the cart.
+
+> **bool** \$cart->updateAttributes( **string** $id, **string** $hash, **array** $attributes );
+
+```php
+// Add a product to the cart
+$cart->add('product1', 2, [
+    'color' => 'red',
+    'size' => 'large',
+    'price' => 29.99
+]);
+
+// Get the hash of the added item
+$item = $cart->getItem('product1');
+$hash = $item['hash'];
+
+// Update the color and size attributes
+$cart->updateAttributes('product1', $hash, [
+    'color' => 'blue',
+    'size' => 'medium'
+]);
+```
 
 
 ### Remove Item
